@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>あおき業務企画 | 公式サイト</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #0f172a;
+      --sub: #475569;
+      --line: #e2e8f0;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 24px;
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+      background: linear-gradient(180deg, #f8fafc 0%, #ecfeff 100%);
+      color: var(--text);
+      line-height: 1.7;
+    }
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+    .hero {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: 0 8px 28px rgba(15, 23, 42, 0.06);
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: 32px;
+      line-height: 1.25;
+    }
+    .lead {
+      margin: 0;
+      color: var(--sub);
+      font-size: 16px;
+    }
+    .grid {
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 18px;
+    }
+    .card h2 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+    .card p {
+      margin: 0 0 12px;
+      color: var(--sub);
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--brand);
+      background: var(--brand);
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .btn:hover { background: var(--brand-dark); }
+    .footer {
+      margin-top: 16px;
+      color: var(--sub);
+      font-size: 13px;
+    }
+    @media (max-width: 760px) {
+      body { padding: 14px; }
+      .hero { padding: 20px; }
+      h1 { font-size: 26px; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <h1>あおき業務企画</h1>
+      <p class="lead">業務効率化に関する助言・支援サービスを提供しています。</p>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>会社紹介</h2>
+        <p>事業内容、販売方法、お問い合わせ先などの基本情報をご案内しています。</p>
+        <a class="btn" href="company.html">会社紹介ページを見る</a>
+      </article>
+
+      <article class="card">
+        <h2>プロダクト</h2>
+        <p>Photo hub for 監査 の紹介ページです。仕様や導入イメージを確認できます。</p>
+        <a class="btn" href="product-photohub.html">プロダクトページを見る</a>
+      </article>
+    </section>
+
+    <p class="footer">お問い合わせ: <a href="mailto:aokigyoumukikaku@gmail.com">aokigyoumukikaku@gmail.com</a></p>
+  </main>
+</body>
+</html>

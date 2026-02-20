@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>あおき業務企画 | 事業情報</title>
+  <title>会社紹介 | あおき業務企画</title>
   <style>
     :root {
       --bg: #f8fafc;
@@ -33,6 +33,17 @@
       padding: 24px;
       box-shadow: 0 8px 28px rgba(15, 23, 42, 0.06);
     }
+    .nav {
+      margin-bottom: 14px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .nav a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(14, 165, 164, 0.35);
+    }
+    .nav a:hover { border-bottom-color: rgba(14, 165, 164, 0.8); }
     h1 {
       margin: 0 0 8px;
       font-size: 28px;
@@ -64,11 +75,6 @@
       font-size: 18px;
     }
     p { margin: 0 0 8px; }
-    ul {
-      margin: 8px 0 0;
-      padding-left: 1.2em;
-    }
-    li { margin: 4px 0; }
     .label {
       font-weight: 700;
       color: #0f172a;
@@ -86,47 +92,6 @@
       font-size: 13px;
       color: var(--muted);
     }
-    .product-card {
-      margin-top: 12px;
-      padding: 16px;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      background: #f8fafc;
-    }
-    .product-image {
-      width: 150px;
-      height: auto;
-      border-radius: 8px;
-      display: block;
-      margin: 8px 0 14px;
-    }
-    .product-title {
-      margin: 0 0 6px;
-      font-size: 18px;
-      font-weight: 700;
-    }
-    .product-desc {
-      margin: 0 0 10px;
-      color: var(--muted);
-    }
-    .product-list {
-      margin: 0 0 14px;
-      padding-left: 1.2em;
-    }
-    .btn {
-      display: inline-block;
-      padding: 10px 14px;
-      border-radius: 8px;
-      border: 1px solid #0f172a;
-      color: #ffffff;
-      background: #0f172a;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 700;
-    }
-    .btn:hover {
-      background: #1e293b;
-    }
     @media (max-width: 640px) {
       body { padding: 14px; }
       .card { padding: 18px; }
@@ -137,11 +102,10 @@
 <body>
   <main class="wrap">
     <article class="card">
-      <span class="badge">Business Information</span>
-      <h1>あおき業務企画</h1>
-      <p class="lead">
-        企業様の業務効率向上に資する助言および各種支援サービスを提供しています。
-      </p>
+      <p class="nav"><a href="index.html">トップページへ戻る</a></p>
+      <span class="badge">Company</span>
+      <h1>会社紹介</h1>
+      <p class="lead">あおき業務企画は、企業様の業務効率向上に向けた助言・支援サービスを提供しています。</p>
 
       <section>
         <h2>事業内容・販売方法</h2>
@@ -156,33 +120,7 @@
         <p><span class="label">受付方法:</span> メールにて受け付け</p>
       </section>
 
-      <section>
-        <h2>返金ポリシー</h2>
-        <ul>
-          <li>サービス提供前（未着手）のキャンセルは全額返金します。</li>
-          <li>サービス提供開始後（着手後）の返金はお受けできません。</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>キャンセルポリシー</h2>
-        <ul>
-          <li>サービス開始日の3営業日前までのキャンセルは無料です。</li>
-          <li>前日キャンセルは料金の50%を申し受けます。</li>
-          <li>当日キャンセルは料金の100%を申し受けます。</li>
-        </ul>
-      </section>
-      <section>
-        <h2>不審請求（チャージバック）対応方針</h2>
-        <p>
-          不審請求が発生した場合は、契約書・発注書・納品記録・メール履歴に加え、
-          本人確認記録およびアクセスログ等の証跡を提出し、適切に対応します。
-        </p>
-      </section>
-
-      <p class="note">
-        最終更新日: 2026-02-16
-      </p>
+      <p class="note">最終更新日: 2026-02-20</p>
     </article>
   </main>
 </body>
