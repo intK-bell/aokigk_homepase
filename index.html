@@ -46,7 +46,7 @@
       position: relative;
       width: min(560px, calc(100vw - 20px));
       border: 2px solid var(--line);
-      border-radius: 30px;
+      border-radius: 46px;
       background:
         linear-gradient(0deg, rgba(255, 255, 255, 0.56) 0%, rgba(255, 255, 255, 0.15) 12%, rgba(255, 255, 255, 0.05) 100%),
         rgba(119, 111, 101, 0.28);
@@ -192,7 +192,7 @@
       height: 112px;
       background-size: cover;
       background-position: center;
-      filter: brightness(0.82);
+      filter: brightness(0.78) saturate(0.88) contrast(0.94);
       transition: filter 220ms ease;
     }
 
@@ -237,7 +237,7 @@
     @media (max-width: 760px) {
       .selector {
         width: calc(100vw - 14px);
-        border-radius: 24px;
+        border-radius: 36px;
       }
 
       .selector-toggle {
@@ -311,13 +311,13 @@
             </a>
           </li>
           <li>
-            <a class="selector-item wakasama" style="--i:3" href="product.html" data-label="若様の宿題">
+            <div class="selector-item wakasama" style="--i:3" data-label="若様の宿題" aria-disabled="true">
               <span class="thumb" aria-hidden="true"></span>
               <span class="meta">
                 <span class="label">若様の宿題</span>
-                <span class="desc">プロダクト紹介ページへ</span>
+                <span class="desc">準備中</span>
               </span>
-            </a>
+            </div>
           </li>
         </ul>
         <div class="foreground-blur bottom" aria-hidden="true"></div>

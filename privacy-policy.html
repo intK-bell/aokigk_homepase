@@ -33,18 +33,21 @@
       max-width: 980px;
       margin: 0 auto;
       padding: 22px 24px;
-      position: relative;
-      padding-right: 78px;
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid rgba(212, 202, 183, 0.75);
     }
-    .menu {
-      display: flex;
-      gap: 18px;
+    .brand-icon {
+      line-height: 0;
     }
-    .menu a {
+    .brand-icon img {
+      width: 42px;
+      height: auto;
+      display: block;
+      opacity: 0.9;
+    }
+    .back-link {
       color: var(--accent);
       text-decoration: none;
       letter-spacing: 0.06em;
@@ -53,22 +56,9 @@
       border-bottom: 1px solid transparent;
       transition: border-color 200ms ease, color 200ms ease;
     }
-    .menu a:hover {
+    .back-link:hover {
       color: var(--accent-deep);
       border-bottom-color: rgba(74, 63, 49, 0.6);
-    }
-    .corner-icon {
-      position: absolute;
-      right: 24px;
-      top: 50%;
-      transform: translateY(-50%);
-      line-height: 0;
-    }
-    .corner-icon img {
-      width: 42px;
-      height: 42px;
-      display: block;
-      opacity: 0.9;
     }
     .page {
       max-width: 980px;
@@ -119,27 +109,21 @@
       color: var(--sub);
     }
     @media (max-width: 640px) {
-      .site-header { padding: 16px 14px; padding-right: 66px; }
-      .menu { gap: 12px; }
+      .site-header { padding: 16px 14px; }
       .page { margin-top: 14px; padding: 0 12px 12px; }
       .container { padding: 22px 16px; }
       h1 { font-size: 26px; }
       h2 { font-size: 19px; }
-      .corner-icon { right: 14px; }
-      .corner-icon img { width: 34px; height: 34px; }
+      .brand-icon img { width: 34px; height: auto; }
     }
   </style>
 </head>
 <body>
   <header class="site-header">
-    <nav class="menu" aria-label="Main">
-      <a href="index.html">home</a>
-      <a href="company.html">about</a>
-      <a href="product.html">product</a>
-    </nav>
-    <a class="corner-icon" href="index.html" aria-label="home">
-      <img src="assset/company-icon.svg" alt="あおき業務企画アイコン">
-    </a>
+    <span class="brand-icon" aria-hidden="true">
+      <img src="assset/icon_com_w_tra.png" alt="あおき業務企画アイコン">
+    </span>
+    <a class="back-link" href="company.html">back</a>
   </header>
   <main class="page">
     <section class="container">
@@ -214,7 +198,7 @@
       本ポリシーに関するお問い合わせは、以下までご連絡ください。<br>
       事業者名: あおき業務企画<br>
       メールアドレス: <a href="mailto:aokigyoumukikaku@gmail.com">aokigyoumukikaku@gmail.com</a><br>
-      所在地: 〒145-0065 東京都大田区東雪谷
+      所在地: 〒145-0065 東京都大田区
     </p>
 
       <p class="footer">以上</p>
