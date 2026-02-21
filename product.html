@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/webp" href="assset/favicon.webp">
+  <title>プロダクト | product</title>
+  <style>
+    :root {
+      --bg: #f6f1e7;
+      --bg-soft: #ede6d8;
+      --ink: #2f2a24;
+      --sub: #6a6258;
+      --line: #d4cab7;
+      --accent: #5c4f3f;
+      --accent-deep: #4a3f31;
+      --card: rgba(255, 252, 245, 0.82);
+      --smoke: rgba(58, 50, 41, 0.38);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Yu Mincho", "Hiragino Mincho ProN", "Times New Roman", serif;
+      background:
+        linear-gradient(180deg, var(--smoke), var(--smoke)),
+        url("assset/bg-product.png") center / cover no-repeat fixed;
+      color: var(--ink);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+    .site-header {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 22px 24px;
+      position: relative;
+      padding-right: 78px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      border-bottom: 1px solid rgba(212, 202, 183, 0.75);
+    }
+    .menu {
+      display: flex;
+      gap: 18px;
+    }
+    .menu a {
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      font-size: 14px;
+      text-transform: lowercase;
+      border-bottom: 1px solid transparent;
+      transition: border-color 200ms ease, color 200ms ease;
+    }
+    .menu a:hover {
+      color: var(--accent-deep);
+      border-bottom-color: rgba(74, 63, 49, 0.6);
+    }
+    .corner-icon {
+      position: absolute;
+      right: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      line-height: 0;
+    }
+    .corner-icon img {
+      width: 42px;
+      height: 42px;
+      display: block;
+      opacity: 0.9;
+    }
+    .wrap {
+      max-width: 980px;
+      margin: 22px auto 0;
+      padding: 0 20px 20px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 24px;
+      box-shadow: 0 12px 30px rgba(60, 45, 26, 0.08);
+    }
+    .card + .card { margin-top: 14px; }
+    .sub-link a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(92, 79, 63, 0.35);
+    }
+    .sub-link a:hover { border-bottom-color: rgba(74, 63, 49, 0.8); }
+    h1 {
+      margin: 0;
+      font-size: 32px;
+      line-height: 1.35;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+    }
+    h2 {
+      margin: 0 0 8px;
+      font-size: 26px;
+      line-height: 1.35;
+      font-weight: 500;
+    }
+    p { margin: 0 0 10px; }
+    .lead {
+      margin: 0 0 16px;
+      color: var(--sub);
+    }
+    .feature {
+      margin: 0 0 14px;
+      padding-left: 1.2em;
+    }
+    .feature li { margin: 4px 0; }
+    .btn {
+      display: inline-block;
+      padding: 10px 12px;
+      border-radius: 6px;
+      border: 1px solid var(--accent);
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+    .btn:hover { background: var(--accent-deep); }
+    .sub-link {
+      margin-top: 14px;
+      font-size: 14px;
+      color: var(--sub);
+    }
+    @media (max-width: 760px) {
+      .site-header { padding: 16px 14px; padding-right: 66px; }
+      .menu { gap: 12px; }
+      .wrap { margin-top: 14px; padding: 0 14px 14px; }
+      .card { padding: 18px; }
+      h1 { font-size: 26px; }
+      h2 { font-size: 22px; }
+      .corner-icon { right: 14px; }
+      .corner-icon img { width: 34px; height: 34px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="menu" aria-label="Main">
+      <a href="index.html">home</a>
+      <a href="company.html">about</a>
+      <a href="product.html">product</a>
+    </nav>
+    <a class="corner-icon" href="index.html" aria-label="home">
+      <img src="assset/company-icon.svg" alt="あおき業務企画アイコン">
+    </a>
+  </header>
+
+  <main class="wrap">
+    <article class="card">
+      <h1>product</h1>
+    </article>
+
+    <article class="card">
+      <h2>Photo hub for 監査</h2>
+      <p class="lead">監査向けの写真・コメント管理アプリです。認証付き環境で、現場記録の収集と共有を効率化します。</p>
+      <ul class="feature">
+        <li>写真アップロードとコメント管理</li>
+        <li>フォルダ単位のPowerPoint出力</li>
+        <li>監査業務に合わせた情報整理</li>
+      </ul>
+
+      <a class="btn" href="https://ph4k.aokigk.com/landing" target="_blank" rel="noopener noreferrer">商品ページを見る</a>
+      <p class="sub-link">プライバシーポリシー: <a href="privacy-policy.html">こちら</a></p>
+    </article>
+
+    <article class="card">
+      <h2>Pulseez</h2>
+      <p>スマートフォンのカメラで、手軽に心拍の目安を確認できるシンプルなアプリです。</p>
+      <a class="btn" href="https://apps.apple.com/jp/app/pulseez/id6742394025" target="_blank" rel="noopener noreferrer">App Storeで見る</a>
+    </article>
+
+    <article class="card">
+      <h2>若様の宿題</h2>
+      <p>今日の若様（我が子）の宿題の範囲を知りたい！子供が宿題の範囲を教えてくれなきゃ携帯使えないようにしてみました</p>
+      <a>準備中</a>
+    </article>
+  </main>
+</body>
+</html>

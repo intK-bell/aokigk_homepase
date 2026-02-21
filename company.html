@@ -3,109 +3,150 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>会社紹介 | あおき業務企画</title>
+  <link rel="icon" type="image/webp" href="assset/favicon.webp">
+  <title>あおき業務企画 | 事業情報</title>
   <style>
     :root {
-      --bg: #f8fafc;
-      --card: #ffffff;
-      --text: #0f172a;
-      --muted: #475569;
-      --line: #e2e8f0;
-      --accent: #0ea5a4;
+      --bg: #f6f1e7;
+      --bg-soft: #ede6d8;
+      --ink: #2f2a24;
+      --sub: #6a6258;
+      --line: #d4cab7;
+      --accent: #5c4f3f;
+      --accent-deep: #4a3f31;
+      --card: rgba(255, 252, 245, 0.82);
+      --smoke: rgba(58, 50, 41, 0.38);
     }
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      padding: 24px;
-      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
-      background: linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
-      color: var(--text);
-      line-height: 1.7;
+      padding: 0;
+      font-family: "Yu Mincho", "Hiragino Mincho ProN", "Times New Roman", serif;
+      background:
+        linear-gradient(180deg, var(--smoke), var(--smoke)),
+        url("assset/bg-company.png") center / cover no-repeat fixed;
+      color: var(--ink);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+    .site-header {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 22px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(212, 202, 183, 0.75);
+    }
+    .brand-icon {
+      line-height: 0;
+    }
+    .brand-icon img {
+      width: 42px;
+      height: auto;
+      display: block;
+      opacity: 0.9;
+    }
+    .back-link {
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      font-size: 14px;
+      text-transform: lowercase;
+      border-bottom: 1px solid transparent;
+      transition: border-color 200ms ease, color 200ms ease;
+    }
+    .back-link:hover {
+      color: var(--accent-deep);
+      border-bottom-color: rgba(74, 63, 49, 0.6);
     }
     .wrap {
-      max-width: 880px;
-      margin: 0 auto;
+      max-width: 980px;
+      margin: 22px auto 0;
+      padding: 0 24px 24px;
     }
     .card {
       background: var(--card);
       border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 24px;
-      box-shadow: 0 8px 28px rgba(15, 23, 42, 0.06);
-    }
-    .nav {
-      margin-bottom: 14px;
-      font-size: 14px;
-      color: var(--muted);
-    }
-    .nav a {
-      color: var(--accent);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(14, 165, 164, 0.35);
-    }
-    .nav a:hover { border-bottom-color: rgba(14, 165, 164, 0.8); }
-    h1 {
-      margin: 0 0 8px;
-      font-size: 28px;
-      line-height: 1.3;
-    }
-    .lead {
-      margin: 0;
-      color: var(--muted);
-      font-size: 15px;
+      border-radius: 6px;
+      padding: 30px 26px;
+      box-shadow: 0 12px 30px rgba(60, 45, 26, 0.08);
     }
     .badge {
       display: inline-block;
       margin: 0 0 12px;
       padding: 4px 10px;
+      border: 1px solid var(--line);
       border-radius: 999px;
+      background: rgba(255, 252, 245, 0.75);
       font-size: 12px;
-      font-weight: 700;
-      color: #0f766e;
-      background: #ccfbf1;
-      border: 1px solid #99f6e4;
+      letter-spacing: 0.04em;
+      color: var(--accent);
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 32px;
+      line-height: 1.4;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+    }
+    .lead {
+      margin: 0;
+      color: var(--sub);
+      font-size: 15px;
     }
     section {
-      margin-top: 20px;
+      margin-top: 22px;
       padding-top: 20px;
       border-top: 1px solid var(--line);
     }
     h2 {
       margin: 0 0 8px;
-      font-size: 18px;
+      font-size: 20px;
+      font-weight: 600;
     }
     p { margin: 0 0 8px; }
-    .label {
-      font-weight: 700;
-      color: #0f172a;
+    ul {
+      margin: 8px 0 0;
+      padding-left: 1.2em;
     }
+    li { margin: 4px 0; }
+    .label { font-weight: 700; }
     a {
       color: var(--accent);
       text-decoration: none;
-      border-bottom: 1px solid rgba(14, 165, 164, 0.35);
+      border-bottom: 1px solid rgba(92, 79, 63, 0.35);
     }
-    a:hover {
-      border-bottom-color: rgba(14, 165, 164, 0.8);
-    }
+    a:hover { border-bottom-color: rgba(74, 63, 49, 0.8); }
     .note {
       margin-top: 20px;
       font-size: 13px;
-      color: var(--muted);
+      color: var(--sub);
     }
     @media (max-width: 640px) {
-      body { padding: 14px; }
-      .card { padding: 18px; }
-      h1 { font-size: 24px; }
+      .site-header { padding: 16px 14px; }
+      .wrap { margin-top: 14px; padding: 0 14px 14px; }
+      .card { padding: 22px 16px; }
+      h1 { font-size: 26px; }
+      .brand-icon img { width: 34px; height: auto; }
     }
   </style>
 </head>
 <body>
+  <header class="site-header">
+    <span class="brand-icon" aria-hidden="true">
+      <img src="assset/icon_com_w_tra.png" alt="あおき業務企画アイコン">
+    </span>
+    <a class="back-link" href="index.html">back</a>
+  </header>
+
   <main class="wrap">
     <article class="card">
-      <p class="nav"><a href="index.html">トップページへ戻る</a></p>
-      <span class="badge">Company</span>
-      <h1>会社紹介</h1>
-      <p class="lead">あおき業務企画は、企業様の業務効率向上に向けた助言・支援サービスを提供しています。</p>
+      <span class="badge">Business Information</span>
+      <h1>あおき業務企画</h1>
+      <p class="lead">
+        企業様の業務効率向上に資する助言および各種支援サービスを提供しています。
+      </p>
 
       <section>
         <h2>事業内容・販売方法</h2>
@@ -116,11 +157,13 @@
       <section>
         <h2>お問い合わせ先</h2>
         <p><span class="label">メール:</span> <a href="mailto:aokigyoumukikaku@gmail.com">aokigyoumukikaku@gmail.com</a></p>
-        <p><span class="label">所在地:</span> 〒145-0065 東京都大田区東雪谷</p>
+        <p><span class="label">所在地:</span> 〒145-0065 東京都大田区</p>
         <p><span class="label">受付方法:</span> メールにて受け付け</p>
       </section>
 
-      <p class="note">最終更新日: 2026-02-20</p>
+      <p class="note">
+        最終更新日: 2026-02-16
+      </p>
     </article>
   </main>
 </body>

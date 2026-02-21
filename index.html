@@ -3,114 +3,373 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/webp" href="assset/favicon.webp">
   <title>あおき業務企画 | 公式サイト</title>
   <style>
     :root {
-      --bg: #f8fafc;
-      --card: #ffffff;
-      --text: #0f172a;
-      --sub: #475569;
-      --line: #e2e8f0;
-      --brand: #0f766e;
-      --brand-dark: #115e59;
+      --ink: #fff8ed;
+      --ink-soft: rgba(255, 248, 237, 0.74);
+      --line: rgba(255, 255, 255, 0.52);
+      --line-soft: rgba(255, 255, 255, 0.24);
+      --shadow: rgba(18, 11, 6, 0.35);
+      --overlay: rgba(40, 30, 22, 0.44);
+      --focus: #f7d6ab;
+      --panel-height: 78vh;
     }
+
     * { box-sizing: border-box; }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
-      margin: 0;
-      padding: 24px;
-      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
-      background: linear-gradient(180deg, #f8fafc 0%, #ecfeff 100%);
-      color: var(--text);
-      line-height: 1.7;
+      font-family: "Yu Mincho", "Hiragino Mincho ProN", "Times New Roman", serif;
+      color: var(--ink);
+      background:
+        linear-gradient(180deg, var(--overlay), var(--overlay)),
+        url("assset/bg-index.png") center / cover no-repeat fixed;
+      overflow: hidden;
     }
-    .wrap {
-      max-width: 980px;
-      margin: 0 auto;
-    }
+
     .hero {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 28px;
-      box-shadow: 0 8px 28px rgba(15, 23, 42, 0.06);
-    }
-    h1 {
-      margin: 0 0 10px;
-      font-size: 32px;
-      line-height: 1.25;
-    }
-    .lead {
-      margin: 0;
-      color: var(--sub);
-      font-size: 16px;
-    }
-    .grid {
-      margin-top: 16px;
+      min-height: 100vh;
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      place-items: center;
+      padding: 20px;
+    }
+
+    .selector {
+      position: relative;
+      width: min(560px, calc(100vw - 20px));
+      border: 2px solid var(--line);
+      border-radius: 30px;
+      background:
+        linear-gradient(0deg, rgba(255, 255, 255, 0.56) 0%, rgba(255, 255, 255, 0.15) 12%, rgba(255, 255, 255, 0.05) 100%),
+        rgba(119, 111, 101, 0.28);
+      box-shadow: 0 20px 60px -24px var(--shadow), inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(8px);
+      overflow: hidden;
+      transition: max-height 320ms ease, transform 320ms ease;
+      max-height: 76px;
+      transform-origin: center;
+    }
+
+    .selector[data-open="true"] {
+      max-height: var(--panel-height);
+      transform: translateY(-4px);
+    }
+
+    .selector-toggle {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      border: 0;
+      margin: 0;
+      padding: 18px 24px;
+      color: var(--ink);
+      background: transparent;
+      text-align: left;
+      cursor: pointer;
+      font: inherit;
+      letter-spacing: 0.05em;
+      font-size: 21px;
+      text-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+    }
+
+    .selector-toggle:focus-visible,
+    .selector-item:focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: -2px;
+    }
+
+    .selector-body {
+      position: relative;
+      padding: 0 10px 10px;
+      opacity: 0;
+      transition: opacity 220ms ease;
+      pointer-events: none;
+    }
+
+    .selector[data-open="true"] .selector-body {
+      opacity: 1;
+      pointer-events: auto;
+      transition-delay: 120ms;
+    }
+
+    .foreground-blur {
+      display: none;
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      z-index: 7;
+      height: 22px;
+      pointer-events: none;
+    }
+
+    .foreground-blur.top {
+      top: 0;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      backdrop-filter: blur(6px);
+      mask: linear-gradient(black, transparent);
+    }
+
+    .foreground-blur.bottom {
+      bottom: 10px;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      backdrop-filter: blur(6px);
+      mask: linear-gradient(transparent, black);
+    }
+
+    .selector[data-open="true"] .foreground-blur {
+      display: block;
+    }
+
+    .selector-panel {
+      position: relative;
+      z-index: 6;
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 2px 6px;
+      max-height: calc(var(--panel-height) - 98px);
+      overflow-y: auto;
+      list-style: none;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.42) transparent;
+    }
+
+    .selector-panel::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .selector-panel::-webkit-scrollbar-thumb {
+      background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.44) 20%, rgba(255, 255, 255, 0.44) 80%, rgba(255, 255, 255, 0));
+      border-radius: 999px;
+    }
+
+    .selector-item {
+      display: grid;
+      grid-template-columns: 112px 1fr;
+      align-items: center;
+      min-height: 112px;
       gap: 14px;
-    }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 18px;
-    }
-    .card h2 {
-      margin: 0 0 8px;
-      font-size: 20px;
-    }
-    .card p {
-      margin: 0 0 12px;
-      color: var(--sub);
-    }
-    .btn {
-      display: inline-block;
-      padding: 10px 12px;
-      border-radius: 8px;
-      border: 1px solid var(--brand);
-      background: var(--brand);
-      color: #fff;
+      border-radius: 18px;
+      border: 1px solid var(--line-soft);
       text-decoration: none;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.15);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(24px);
+      transition:
+        transform 420ms cubic-bezier(0.2, 0.75, 0.2, 1),
+        opacity 380ms ease,
+        border-color 160ms ease,
+        background-color 160ms ease;
+      transition-delay: 0ms;
+    }
+
+    .selector[data-open="true"] .selector-item {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: calc(40ms * var(--i) + 60ms);
+    }
+
+    .selector-item:hover {
+      border-color: rgba(255, 255, 255, 0.56);
+      background: rgba(0, 0, 0, 0.26);
+    }
+
+    .thumb {
+      width: 112px;
+      height: 112px;
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.82);
+      transition: filter 220ms ease;
+    }
+
+    .selector-item:hover .thumb {
+      filter: brightness(1);
+    }
+
+    .meta {
+      position: relative;
+      padding-right: 16px;
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.55);
+    }
+
+    .label {
+      display: block;
+      font-size: 24px;
+      line-height: 1.15;
+      margin-bottom: 6px;
+    }
+
+    .desc {
+      display: block;
       font-size: 14px;
-      font-weight: 700;
+      line-height: 1.35;
+      color: rgba(255, 255, 255, 0.85);
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 240ms ease, transform 240ms ease;
     }
-    .btn:hover { background: var(--brand-dark); }
-    .footer {
-      margin-top: 16px;
-      color: var(--sub);
-      font-size: 13px;
+
+    .selector-item:hover .desc,
+    .selector-item:focus-visible .desc {
+      opacity: 1;
+      transform: translateY(0);
     }
+
+    .company .thumb { background-image: url("assset/icon_com.webp"); }
+    .photohub .thumb { background-image: url("assset/icon_ph4k.webp"); }
+    .pulseez .thumb { background-image: url("assset/icon_pulseez.webp"); }
+    .wakasama .thumb { background-image: url("assset/icon_waka.webp"); }
+
     @media (max-width: 760px) {
-      body { padding: 14px; }
-      .hero { padding: 20px; }
-      h1 { font-size: 26px; }
-      .grid { grid-template-columns: 1fr; }
+      .selector {
+        width: calc(100vw - 14px);
+        border-radius: 24px;
+      }
+
+      .selector-toggle {
+        padding: 16px 14px;
+        font-size: 18px;
+      }
+
+      .selector[data-open="true"] {
+        max-height: min(82vh, 620px);
+      }
+
+      .selector-panel {
+        max-height: calc(min(82vh, 620px) - 92px);
+      }
+
+      .selector-item {
+        grid-template-columns: 92px 1fr;
+        min-height: 92px;
+      }
+
+      .thumb {
+        width: 92px;
+        height: 92px;
+      }
+
+      .label {
+        font-size: 19px;
+      }
+
+      .desc {
+        font-size: 13px;
+      }
     }
   </style>
 </head>
 <body>
-  <main class="wrap">
-    <section class="hero">
-      <h1>あおき業務企画</h1>
-      <p class="lead">業務効率化に関する助言・支援サービスを提供しています。</p>
+  <main class="hero">
+    <section class="selector" id="navSelector" data-open="false" aria-label="ページセレクター">
+      <button class="selector-toggle" id="selectorToggle" type="button" aria-expanded="false" aria-controls="selectorPanel">
+        <span id="selectorLabel">あなたの業務をワクワクさせる</span>
+      </button>
+
+      <div class="selector-body" id="selectorBody">
+        <div class="foreground-blur top" aria-hidden="true"></div>
+        <ul class="selector-panel" id="selectorPanel">
+          <li>
+            <a class="selector-item company" style="--i:0" href="company.html" data-label="company">
+              <span class="thumb" aria-hidden="true"></span>
+              <span class="meta">
+                <span class="label">company</span>
+                <span class="desc">会社情報ページへ</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="selector-item photohub" style="--i:1" href="https://ph4k.aokigk.com/landing" target="_blank" rel="noopener noreferrer" data-label="Photo hub for 監査">
+              <span class="thumb" aria-hidden="true"></span>
+              <span class="meta">
+                <span class="label">Photo hub for 監査</span>
+                <span class="desc">監査向けフォト管理サービス</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="selector-item pulseez" style="--i:2" href="https://apps.apple.com/jp/app/pulseez/id6742394025" target="_blank" rel="noopener noreferrer" data-label="Pulseez">
+              <span class="thumb" aria-hidden="true"></span>
+              <span class="meta">
+                <span class="label">Pulseez</span>
+                <span class="desc">心拍チェックアプリ</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="selector-item wakasama" style="--i:3" href="product.html" data-label="若様の宿題">
+              <span class="thumb" aria-hidden="true"></span>
+              <span class="meta">
+                <span class="label">若様の宿題</span>
+                <span class="desc">プロダクト紹介ページへ</span>
+              </span>
+            </a>
+          </li>
+        </ul>
+        <div class="foreground-blur bottom" aria-hidden="true"></div>
+      </div>
     </section>
-
-    <section class="grid">
-      <article class="card">
-        <h2>会社紹介</h2>
-        <p>事業内容、販売方法、お問い合わせ先などの基本情報をご案内しています。</p>
-        <a class="btn" href="company.html">会社紹介ページを見る</a>
-      </article>
-
-      <article class="card">
-        <h2>プロダクト</h2>
-        <p>Photo hub for 監査 の紹介ページです。仕様や導入イメージを確認できます。</p>
-        <a class="btn" href="product-photohub.html">プロダクトページを見る</a>
-      </article>
-    </section>
-
-    <p class="footer">お問い合わせ: <a href="mailto:aokigyoumukikaku@gmail.com">aokigyoumukikaku@gmail.com</a></p>
   </main>
+
+  <script>
+    const selector = document.getElementById("navSelector");
+    const toggle = document.getElementById("selectorToggle");
+    const panel = document.getElementById("selectorPanel");
+    const label = document.getElementById("selectorLabel");
+    const items = Array.from(document.querySelectorAll(".selector-item"));
+
+    function setOpen(open) {
+      selector.dataset.open = String(open);
+      toggle.setAttribute("aria-expanded", String(open));
+    }
+
+    toggle.addEventListener("click", () => {
+      setOpen(selector.dataset.open !== "true");
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        toggle.focus();
+      }
+      if (event.key === "Enter" && document.activeElement === toggle) {
+        setOpen(selector.dataset.open !== "true");
+      }
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!selector.contains(event.target)) {
+        setOpen(false);
+      }
+    });
+
+    items.forEach((item) => {
+      item.addEventListener("click", () => {
+        label.textContent = item.dataset.label || "あなたの業務をワクワクさせる";
+      });
+    });
+
+    setTimeout(() => {
+      setOpen(true);
+    }, 120);
+
+    panel.addEventListener("wheel", (event) => {
+      event.stopPropagation();
+    }, { passive: true });
+  </script>
 </body>
 </html>
