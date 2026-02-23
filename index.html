@@ -14,7 +14,7 @@
       --shadow: rgba(18, 11, 6, 0.35);
       --overlay: rgba(40, 30, 22, 0.44);
       --focus: #f7d6ab;
-      --panel-height: 78vh;
+      --panel-height: 72vh;
     }
 
     * { box-sizing: border-box; }
@@ -44,7 +44,7 @@
 
     .selector {
       position: relative;
-      width: min(560px, calc(100vw - 20px));
+      width: min(560px, 100%);
       border: 2px solid var(--line);
       border-radius: 46px;
       background:
@@ -86,9 +86,13 @@
       outline-offset: -2px;
     }
 
+    #selectorLabel{
+      font-size: 16px;
+    }
+
     .selector-body {
       position: relative;
-      padding: 0 10px 10px;
+      padding: 0 10px 8px;
       opacity: 0;
       transition: opacity 220ms ease;
       pointer-events: none;
@@ -137,7 +141,7 @@
       gap: 10px;
       margin: 0;
       padding: 2px 6px;
-      max-height: calc(var(--panel-height) - 98px);
+      max-height: calc(var(--panel-height) - 128px);
       overflow-y: auto;
       list-style: none;
       scrollbar-width: thin;
@@ -236,7 +240,7 @@
 
     @media (max-width: 760px) {
       .selector {
-        width: calc(100vw - 14px);
+        width: 100%;
         border-radius: 36px;
       }
 
@@ -246,11 +250,11 @@
       }
 
       .selector[data-open="true"] {
-        max-height: min(82vh, 620px);
+        max-height: min(74vh, 560px);
       }
 
       .selector-panel {
-        max-height: calc(min(82vh, 620px) - 92px);
+        max-height: calc(min(74vh, 560px) - 112px);
       }
 
       .selector-item {
@@ -365,7 +369,10 @@
 
     setTimeout(() => {
       setOpen(true);
-    }, 120);
+      setTimeout(() => {
+        setOpen(false);
+      }, 600);
+    }, 180);
 
     panel.addEventListener("wheel", (event) => {
       event.stopPropagation();
