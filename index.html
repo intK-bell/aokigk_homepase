@@ -29,9 +29,7 @@
     body {
       font-family: "Yu Mincho", "Hiragino Mincho ProN", "Times New Roman", serif;
       color: var(--ink);
-      background:
-        linear-gradient(180deg, var(--overlay), var(--overlay)),
-        url("assset/bg-index.png") center / cover no-repeat fixed;
+      background: url("assset/bg-index.png") center / cover no-repeat fixed;
       overflow: hidden;
     }
 
@@ -88,6 +86,7 @@
 
     #selectorLabel{
       font-size: 16px;
+      color: #fff;
     }
 
     .selector-body {
@@ -235,7 +234,7 @@
 
     .company .thumb { background-image: url("assset/icon_com.webp"); }
     .photohub .thumb { background-image: url("assset/icon_ph4k.webp"); }
-    .pulseez .thumb { background-image: url("assset/icon_pulseez.webp"); }
+    /* .pulseez .thumb { background-image: url("assset/icon_pulseez.webp"); } */
     .wakasama .thumb { background-image: url("assset/icon_waka.webp"); }
 
     @media (max-width: 760px) {
@@ -305,6 +304,7 @@
               </span>
             </a>
           </li>
+          <!--
           <li>
             <a class="selector-item pulseez" style="--i:2" href="https://apps.apple.com/jp/app/pulseez/id6742394025" target="_blank" rel="noopener noreferrer" data-label="Pulseez">
               <span class="thumb" aria-hidden="true"></span>
@@ -314,6 +314,7 @@
               </span>
             </a>
           </li>
+          -->
           <li>
             <div class="selector-item wakasama" style="--i:3" data-label="若様の宿題" aria-disabled="true">
               <span class="thumb" aria-hidden="true"></span>
