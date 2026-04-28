@@ -29,7 +29,7 @@
     body {
       font-family: "Yu Mincho", "Hiragino Mincho ProN", "Times New Roman", serif;
       color: var(--ink);
-      background: url("assset/bg-index.png") center / cover no-repeat fixed;
+      background: url("assset/bg-alchemist-lp.png") center / cover no-repeat fixed;
       overflow: hidden;
     }
 
@@ -158,10 +158,10 @@
 
     .selector-item {
       display: grid;
-      grid-template-columns: 112px 1fr;
+      grid-template-columns: 18px 1fr;
       align-items: center;
-      min-height: 112px;
-      gap: 14px;
+      min-height: 76px;
+      gap: 12px;
       border-radius: 18px;
       border: 1px solid var(--line-soft);
       text-decoration: none;
@@ -191,16 +191,17 @@
     }
 
     .thumb {
-      width: 112px;
-      height: 112px;
-      background-size: cover;
-      background-position: center;
-      filter: brightness(0.78) saturate(0.88) contrast(0.94);
-      transition: filter 220ms ease;
+      justify-self: center;
+      width: 3px;
+      height: 42px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      transition: background-color 220ms ease, height 220ms ease;
     }
 
     .selector-item:hover .thumb {
-      filter: brightness(1);
+      height: 50px;
+      background: rgba(255, 255, 255, 0.95);
     }
 
     .meta {
@@ -232,11 +233,6 @@
       transform: translateY(0);
     }
 
-    .company .thumb { background-image: url("assset/icon_com.webp"); }
-    .photohub .thumb { background-image: url("assset/icon_ph4k.webp"); }
-    /* .pulseez .thumb { background-image: url("assset/icon_pulseez.webp"); } */
-    .wakasama .thumb { background-image: url("assset/icon_waka.webp"); }
-
     @media (max-width: 760px) {
       .selector {
         width: 100%;
@@ -253,17 +249,17 @@
       }
 
       .selector-panel {
-        max-height: calc(min(74vh, 560px) - 112px);
+        max-height: calc(min(74vh, 560px) - 100px);
       }
 
       .selector-item {
-        grid-template-columns: 92px 1fr;
-        min-height: 92px;
+        grid-template-columns: 14px 1fr;
+        min-height: 72px;
       }
 
       .thumb {
-        width: 92px;
-        height: 92px;
+        width: 3px;
+        height: 36px;
       }
 
       .label {
